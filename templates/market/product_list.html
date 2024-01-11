@@ -1,0 +1,33 @@
+{% extends 'market/base.html' %}
+{% block title %}
+Products
+{% endblock title %}
+
+{% block content %}
+    <h1>Products</h1>
+
+    <hr>
+
+    <h3>Категории</h3>
+    {% for category in categories %}
+        <tr>
+            <td><a href="{% url 'products_of_category' category.pk %}">{{ category.name }}</a></td>
+        </tr>
+    {% endfor %}
+
+    <hr>
+
+    {% if products %}
+        <table>
+            <tr>
+                <td>Header</td>
+                <td>Text</td>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock content %}
